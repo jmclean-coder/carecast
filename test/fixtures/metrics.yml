@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  water_cup: 1
+  sleep_hour: 1
+  work_time: 1
+  play_time: 1
+  energy: 1
+  productivity: 1
+  motivation: 1
+  stress: 1
+  mood: 1
+
+two:
+  water_cup: 1
+  sleep_hour: 1
+  work_time: 1
+  play_time: 1
+  energy: 1
+  productivity: 1
+  motivation: 1
+  stress: 1
+  mood: 1
