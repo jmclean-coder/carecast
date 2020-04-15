@@ -2,7 +2,7 @@
 
 ## User Stories
 
-- A user can Login/Sign-up to access/create their account
+- A user can Login/Sign-up to access/create their account [X] password []
   - Model
     - []Class
     - []Migration
@@ -22,7 +22,7 @@
   - Route
   - CA
   - View
-- A user can view or create a to-do list (CRUD)
+- A user can view or create a to-do list (CRUD)[stretch]
   - Model
     - []Class
     - []Migration

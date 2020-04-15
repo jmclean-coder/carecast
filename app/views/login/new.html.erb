@@ -1,0 +1,7 @@
+<%= flash[:message] %>
+<%= form_tag(verify_path) do %>
+<%= label_tag "Username " %>
+<%= text_field_tag "Username" %><br>
+<%= submit_tag "Login"%>
+<% end %>
+<%= button_to "New User", signup_path, method: "get" %>

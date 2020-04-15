@@ -1,0 +1,4 @@
+<h1>Your Journals</h1>
+<% @user_journals.each do |journal| %>
+<%= link_to journal.title, journal %><br>
+<% end %>
