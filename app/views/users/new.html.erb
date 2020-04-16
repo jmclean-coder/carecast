@@ -11,3 +11,7 @@
 
 <%= f.submit "Create Account" %>
 <% end %>
+
+<% if flash[:error_messages] %>
+<p><%= flash[:error_messages] %></p>
+<% end %>

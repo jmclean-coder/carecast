@@ -1,0 +1,29 @@
+<h1> How are you doing today? </h1>
+
+<div>
+    <%= form_for @metric do |f| %>
+    <%= f.label "Cups of water drank:"%>
+    <%= f.number_field :water_cup %><br>
+    <%= f.label "Hours of sleep"%>
+    <%= f.number_field :sleep_hour %><br>
+    <%= f.label "Working hours"%>
+    <%= f.number_field :work_time %><br>
+    <%= f.label "Playtime"%>
+    <%= f.number_field :play_time %><br>
+</div>
+<p>How satified were you with the following today:</p>
+
+<div>
+    <%= f.label "Energy"%>
+    <%= f.number_field :energy, in: 1..5 %><br>
+    <%= f.label "productivity"%>
+    <%= f.number_field :productivity, in: 1..5 %><br>
+    <%= f.label "motivation"%>
+    <%= f.number_field :motivation, in: 1..5 %><br>
+    <%= f.label "stress"%>
+    <%= f.number_field :stress, in: 1..5 %><br>
+    <%= f.label "mood"%>
+    <%= f.number_field :mood, in: 1..5 %><br>
+    <%= f.submit "Submit"%><br>
+</div>
+<% end %>

@@ -1,4 +1,17 @@
 <h1>Your Journals</h1>
+<p><%= flash[:message] %></p>
+<div>
 <% @user_journals.each do |journal| %>
 <%= link_to journal.title, journal %><br>
 <% end %>
+</div>
+
+
+
+<h2><%= link_to "Dashboard", @user %></h2><br>
+
+<%= link_to "New Journal", new_journal_path %>
+<%= link_to "New Entry", new_journal_entry_path %><br>
+
+
+

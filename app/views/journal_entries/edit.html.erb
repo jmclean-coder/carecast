@@ -1,0 +1,15 @@
+ <h1><%= "Editing: #{@entry.title}" %> </h1>
+<%= form_for @entry do |f| %>
+<%= f.label "Title" %>
+<%= f.text_field :title %><br>
+<%= f.label "Content" %>
+<%= f.text_area :content %><br>
+<%= f.collection_select :journal_id, @user.journals, :id, :title %><br>
+<%= f.submit %>
+<% end %>
+
+<% if flash[:error_messages] %>
+<p><%= flash[:error_messages] %></p>
+<% end %>
+
+<h2><%= link_to "Back", journal_path %></h2>

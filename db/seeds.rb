@@ -40,8 +40,22 @@ metric1 = Metric.create(
     mood: 5
 )
 
+
+Metric.create(
+    water_cup: 7,
+    sleep_hour: 7,
+    work_time: 7,
+    play_time: 2,
+    energy: 4,
+    productivity: 3,
+    motivation: 2,
+    stress: 3,
+    mood: 5
+)
+
 journal1 = Journal.create(
-    title: "My Journal"
+    title: "My Journal",
+    description: "April Journal"
 )
 
 usermet1 = UserMetric.create(
@@ -49,7 +63,9 @@ usermet1 = UserMetric.create(
     metric_id: Metric.first.id
 )
 journalentry1 = JournalEntry.create(
-    content: "Today I had a really good poop", 
+    content: "Today I had a really good poop, and ate some apples for breakfast. 
+    After that I sat down and began making this app!", 
+    title: "Thoughts on today.",
     journal_id: Journal.first.id, 
     user_id: User.first.id
 )

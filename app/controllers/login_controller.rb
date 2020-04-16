@@ -7,7 +7,7 @@ class LoginController < ApplicationController
         @user = User.find_by(user_name: params[:Username])
         if @user
             session[:user_id] = @user.id 
-            redirect_to users_path
+            redirect_to @user
         else
             flash[:message] = "Login details invalid, please try again."
             render :new
