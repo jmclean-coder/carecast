@@ -8,10 +8,12 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+  <% if logged_in? %>
     <%= link_to "Dashboard", user_path(@user) %>
     <%= link_to "Journals", journals_path %>
     <%= link_to "New Cast", new_metric_path %>
     <%= link_to "View Stats", metrics_path %>
+    <% end %>
   </head>
 
   <body>

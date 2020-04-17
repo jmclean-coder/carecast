@@ -1,6 +1,11 @@
 <h1><%= "Welcome, #{@user.name.split(" ").first} "%>! <h2>
 
-<h2> Select which stats you would like to see </h2>
+<h2> Select which stats you would like to see</h2>
+<br>
+<br>
+<%= link_to "Weekly Stat Summary", weekly_path %><br>
+<%= link_to "Monthly Stat Summary", monthly_path %>
+
 
 
 

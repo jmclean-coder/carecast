@@ -266,7 +266,7 @@ has_many :journals, through: :journal_entries
     def mnth_mood_sum
         self.monthly_metrics.map {|metric|
         metric.productivity
-        }.sum
+        }.count
     end
 
 
@@ -354,6 +354,7 @@ has_many :journals, through: :journal_entries
         count = self.mnth_energy_count
         sum / count
     end
+
 
 #----------------------------------------------------Day Sum
     def water_sum
