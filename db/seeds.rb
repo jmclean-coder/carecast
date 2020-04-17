@@ -42,10 +42,10 @@ metric1 = Metric.create(
 
 
 Metric.create(
-    water_cup: 7,
-    sleep_hour: 7,
-    work_time: 7,
-    play_time: 2,
+    water_cup: 3,
+    sleep_hour: 8,
+    work_time: 4,
+    play_time: 1,
     energy: 4,
     productivity: 3,
     motivation: 2,

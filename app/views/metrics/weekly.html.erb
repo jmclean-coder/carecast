@@ -1,0 +1,4 @@
+<h1>Your Average Stats</h1>
+<h2>For the week of: <%= Date.current.beginning_of_week.strftime("%a, %b %Y") %> - <%= Date.current.end_of_week.strftime("%a, %b %Y") %></h2>
+
+<%= render 'avg_stats'%>

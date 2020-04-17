@@ -1,11 +1,9 @@
 <h1><%= @user.name %></h1>
 <h3><%= link_to "Edit Account", edit_user_path %></h3>
+<%= button_to 'Delete Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 
 
-<h2><%= link_to "Journals", journals_path %></h2>
-<h2><%= link_to "Dashboard", user_path %></h2>
-<h2><%= button_to 'Delete Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %></h2>
 
 
 

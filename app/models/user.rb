@@ -9,18 +9,18 @@ has_many :journals, through: :journal_entries
 #----------------------------------------------------Database Queries.
 
     def todays_metrics
-        self.metrics.where(created_at: Date.today)
+        self.metrics.where(created_at: Date.current.beginning_of_day..Date.current.end_of_day)
     end
 
     def weekly_metrics
-        self.metrics.where(created_at: Date.today.all_week) 
+        self.metrics.where(created_at: Date.current.all_week) 
     end
 
     def monthly_metrics
-        self.metrics.where(created_at: Date.today.all_month) 
+        self.metrics.where(created_at: Date.current.all_month) 
     end
 
-#----------------------------------------------------Week Sums.
+#----------------------------------------------------Week Sums/Counts.
 
     
     def wk_water_sum
@@ -65,14 +65,75 @@ has_many :journals, through: :journal_entries
         metric.play_time
     }.sum
     end
+
     def wk_play_time_count
         self.weekly_metrics.map {|metric|
         metric.play_time
         }.count
     end
+
+    def wk_energy_sum
+        self.weekly_metrics.map {|metric|
+        metric.energy
+        }.sum
+    end
+    
+    def wk_energy_count
+        self.weekly_metrics.map {|metric|
+        metric.energy
+        }.count
+    end
+
+    def wk_productivity_sum
+        self.weekly_metrics.map {|metric|
+        metric.productivity
+        }.sum
+    end
+
+    def wk_productivity_count
+        self.weekly_metrics.map {|metric|
+        metric.productivity
+        }.count
+    end
+
+    def wk_motivation_sum
+        self.weekly_metrics.map {|metric|
+        metric.motivation
+        }.sum
+    end
+
+    def wk_motivation_count
+        self.weekly_metrics.map {|metric|
+        metric.motivation
+        }.count
+    end
+
+    def wk_stress_sum
+        self.weekly_metrics.map {|metric|
+        metric.stress
+        }.sum
+    end
+
+    def wk_stress_count
+        self.weekly_metrics.map {|metric|
+        metric.stress
+        }.count
+    end
+
+    def wk_mood_sum
+        self.weekly_metrics.map {|metric|
+        metric.productivity
+        }.sum
+    end
+
+    def wk_mood_count
+        self.weekly_metrics.map {|metric|
+        metric.productivity
+        }.count
+    end
 #----------------------------------------------------Week Averages.
 
-    def wk_avg_play
+    def wk_avg_play_time
         sum = self.wk_play_time_sum
          count = self.wk_play_time_count
          sum / count
@@ -96,11 +157,40 @@ has_many :journals, through: :journal_entries
          sum / count
     end
 
+    def wk_avg_mood
+        sum = self.wk_mood_sum
+        count = self.wk_mood_count
+        sum / count
+    end
+
+    def wk_avg_stress
+        sum = self.wk_stress_sum
+        count = self.wk_stress_count
+        sum / count
+    end
+
+    def wk_avg_productivity
+        sum = self.wk_productivity_sum
+        count = self.wk_productivity_count
+        sum / count
+    end
+
+    def wk_avg_motivation
+        sum = self.wk_motivation_sum
+        count = self.wk_motivation_count
+        sum / count
+    end
+
+    def wk_avg_energy
+        sum = self.wk_energy_sum
+        count = self.wk_energy_count
+        sum / count
+    end
 
 
-#----------------------------------------------------Month Sums.
 
 
+#----------------------------------------------------Month Sums/Counts.
     def mnth_water_sum
         self.monthly_metrics.map {|metric|
         metric.water_cup
@@ -149,8 +239,69 @@ has_many :journals, through: :journal_entries
         }.count
     end
 
+    def mnth_energy_sum
+        self.monthly_metrics.map {|metric|
+        metric.energy
+        }.sum
+    end
+    
+    def mnth_productivity_sum
+        self.monthly_metrics.map {|metric|
+        metric.productivity
+        }.sum
+    end
+
+    def mnth_motivation_sum
+        self.monthly_metrics.map {|metric|
+        metric.motivation
+        }.sum
+    end
+
+    def mnth_stress_sum
+        self.monthly_metrics.map {|metric|
+        metric.stress
+        }.sum
+    end
+
+    def mnth_mood_sum
+        self.monthly_metrics.map {|metric|
+        metric.productivity
+        }.sum
+    end
+
+
+    def mnth_motivation_count
+        self.monthly_metrics.map {|metric|
+        metric.motivation
+        }.count
+    end
+
+    def mnth_stress_count
+        self.monthly_metrics.map {|metric|
+        metric.stress
+        }.count
+    end
+
+    def mnth_mood_count
+        self.monthly_metrics.map {|metric|
+        metric.productivity
+        }.count
+    end
+
+    def mnth_energy_count
+        self.monthly_metrics.map {|metric|
+        metric.energy
+        }.count
+    end
+
+    def mnth_productivity_count
+        self.monthly_metrics.map {|metric|
+        metric.productivity
+        }.count
+    end
+
 #----------------------------------------------------Month Avg.
-    def mnth_avg_play
+    def mnth_avg_play_time
         sum = self.mnth_play_time_sum
         count = self.mnth_play_time_count
         sum / count
@@ -171,6 +322,36 @@ has_many :journals, through: :journal_entries
     def mnth_avg_work_time
         sum = self.mnth_work_time_sum
         count = self.mnth_work_time_count
+        sum / count
+    end
+
+    def mnth_avg_mood
+        sum = self.mnth_mood_sum
+        count = self.mnth_mood_count
+        sum / count
+    end
+
+    def mnth_avg_stress
+        sum = self.mnth_stress_sum
+        count = self.mnth_stress_count
+        sum / count
+    end
+
+    def mnth_avg_productivity
+        sum = self.mnth_productivity_sum
+        count = self.mnth_productivity_count
+        sum / count
+    end
+
+    def mnth_avg_motivation
+        sum = self.mnth_motivation_sum
+        count = self.mnth_motivation_count
+        sum / count
+    end
+
+    def mnth_avg_energy
+        sum = self.mnth_energy_sum
+        count = self.mnth_energy_count
         sum / count
     end
 
@@ -225,9 +406,9 @@ has_many :journals, through: :journal_entries
 
 #----------------------------------------------------Day Avg
 
-    def avg_play
+    def avg_play_time
         sum = self.play_time_sum
-        count = seplay_time_count
+        count = self.play_time_count
         sum / count
     end
 
@@ -248,21 +429,4 @@ has_many :journals, through: :journal_entries
         count = self.work_time_count
         sum / count
     end
-
-
-    # # water => value
-    # # sleep => value
-    # # work => value
-    # # play => value
-
-    # stat_hash = {}
-
-    # user.weekly_metrics.m
-
-
-
-
-
-
-
 end

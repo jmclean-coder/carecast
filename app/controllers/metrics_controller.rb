@@ -16,52 +16,49 @@ class MetricsController < ApplicationController
                 user_id: current_user.id, 
                 metric_id: @metric.id
             )
-            byebug
             redirect_to stats_path
         else
             flash[:error_messages] = @metric.errors.full_messages
             render :new
         end
     end
+#-----------------------------------------------CUSTOM ROUTE CONTROLLER
 
-    def show
-    end
+    # def today - WIP
     
-    #current_user.metrics.where(created_at: Date.today.all_week) 
-    #metrics for a given user, for the week
+    # end
+
+    def weekly
+        @avg_stats = {
+            water: current_user.wk_avg_water,
+            sleep: current_user.wk_avg_sleep,
+            work_time: current_user.wk_avg_work_time,
+            play_time: current_user.wk_avg_play_time,
+            energy: current_user.wk_avg_energy,
+            productivity: current_user.wk_avg_productivity,
+            motivation: current_user.wk_avg_motivation,
+            stress: current_user.wk_avg_stress,
+            mood: current_user.wk_avg_mood
+        }
+    end
+
+    def monthly
+        @avg_stats = {
+            water: current_user.mnth_avg_water,
+            sleep: current_user.mnth_avg_sleep,
+            work_time: current_user.mnth_avg_work_time,
+            play_time: current_user.mnth_avg_play_time,
+            energy: current_user.mnth_avg_energy,
+            productivity: current_user.mnth_avg_productivity,
+            motivation: current_user.mnth_avg_motivation,
+            stress: current_user.mnth_avg_stress,
+            mood: current_user.mnth_avg_mood
+        }
+    end
+
+
     
-    #current_user.metrics.where(created_at: Date.today)
-    #metrics for a given user, created today
-
-    #current_user.metrics.where(created_at: Date.yesterday)
-    #metrics for a given user, created yesterday
-    
-    #current_user.metrics.where(created_at: Date.dayofweek)
-    #metrics for a given user, created dayofweek
-
-    #current_user.metrics.where(created_at: Date.today.all_month) 
-    #metrics for a given user, for the month
-
-    # Metric.where(created_at: Date.today)
-    # Metric.where(created_at: Date.today)
-
-
-    #-------------------------------------
-
-    def today
-        @stats
-    end
-
-    def weekly_avg
-        @stats
-    end
-
-    def monthly_avg
-        @stats
-    end
-
-
-    private
+private
     def metric_params
         params.require(:metric).permit(
             :water_cup, 
@@ -77,6 +74,6 @@ class MetricsController < ApplicationController
     end
 
     def set_metric
-        @journal = Journal.find(params[:id])
+        @metric = Metric.find(params[:id])
     end
 end
