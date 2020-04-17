@@ -23,6 +23,10 @@ class MetricsController < ApplicationController
             render :new
         end
     end
+
+    def show
+    end
+    
     #current_user.metrics.where(created_at: Date.today.all_week) 
     #metrics for a given user, for the week
     
@@ -35,9 +39,26 @@ class MetricsController < ApplicationController
     #current_user.metrics.where(created_at: Date.dayofweek)
     #metrics for a given user, created dayofweek
 
+    #current_user.metrics.where(created_at: Date.today.all_month) 
+    #metrics for a given user, for the month
+
     # Metric.where(created_at: Date.today)
     # Metric.where(created_at: Date.today)
 
+
+    #-------------------------------------
+
+    def today
+        @stats
+    end
+
+    def weekly_avg
+        @stats
+    end
+
+    def monthly_avg
+        @stats
+    end
 
 
     private

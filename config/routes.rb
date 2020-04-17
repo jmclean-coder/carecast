@@ -14,5 +14,10 @@ Rails.application.routes.draw do
   get "/signup", to: "users#new", as: "signup"
   get "/dashboard", to: "users#show", as: "dashboard"
   get "/stats", to: "metrics#index", as: "stats"
+  get "/stats/today", to: "metrics#today", as: "today"
+  get "/stats/weekly", to: "metrics#weekly", as: "weekly"
+  get "/stats/monthly", to: "metrics#monthly", as: "monthly"
+
+
 
 end
